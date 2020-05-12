@@ -1,0 +1,13 @@
+touch a.txt 创建一个文件a.txt
+rm a.txt 删除一个文件a.txt
+git init 初始化当前文件夹为本地git仓库
+git log 查看本地git仓库的所有版本信息
+git config --list 查看本地git仓库的设置信息
+git config -global user.name *** 创建github的用户名
+git config --global user.email ***创建github的邮箱
+git branch 查看分支
+git checkout origin 切换分支到origin
+git remote add origin git@github.com:husg2008/daily.git ssh方式添加远程仓库
+ssh-keygen -t rsa -C "husg@radi.ac.cn"  创建ssh key,window位置在：C:\users\husg\.ssh\id_rsa.pub
+git push origin(remote) origin(local) 推送本地origin分支到远程仓库origin分支
+git pull 拉取远程仓库
