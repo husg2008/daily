@@ -1,0 +1,6 @@
+start with:Wednesday
+2020年05月13日  8:39:27
+Since today,I decide that I shall get up at 6:00 a.m and go to bed at 10:00 p.m.
+I studied some common using git commands yesterday.
+And scince today,I shall study Java and Javascript for more than half an hour a day.
+
