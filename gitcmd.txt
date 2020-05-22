@@ -14,3 +14,5 @@ git pull origin(remote) branch(local) 拉取远程仓库到本地仓库
 git branch -r 查看远程分支
 git branch -a 查看所有分支
 git branch -d test 删除本地分支test
+git branch -r -d origin/branch; git push origin :branch 删除远程分支的两个步骤
+vim 的o或O 用于在正常模式下换行并切换至插入模式，非常好用
