@@ -9,3 +9,5 @@ We had a meeting this morning and  talked about the developing direction of our 
 The most important work at present is to produce landuse data by interpreting remote sensing images.
 To enhance the depth and breadth of data application,bigscreen of single type of landuse is necessary to establish  in our laboratry Web Platform.
 We submitted a personal social security record everyone in our unit.
+2020年05月22日 10:40:51
+进一步学习git命令
