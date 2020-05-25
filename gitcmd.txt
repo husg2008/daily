@@ -1,5 +1,7 @@
 touch a.txt 创建一个文件a.txt
 rm a.txt 删除一个文件a.txt
+mkdir dev 新建一个文件夹目录
+vim正常模式下，dd 删除当前行，cc删除当前行后切换到插入模式
 git init 初始化当前文件夹为本地git仓库
 git log 查看本地git仓库的所有版本信息
 git config --list 查看本地git仓库的设置信息
