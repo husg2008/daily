@@ -22,3 +22,4 @@ git pull -rebase origin master 可以解决本地仓库与远程仓库历史不�
 git pull origin master --allow-unrelated-histories 可以解决提示历史不一致的问题
 git remote -v 查看远程仓库地址
 vim 中的正常模式下，u是撤销上一步操作，ctr+r表示redo，恢复上一步被撤销的操作
+java -Dfile.encoding=utf-8 EmployeeTest 解决java运行在windows中的git中文乱码
