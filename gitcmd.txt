@@ -23,3 +23,9 @@ git pull origin master --allow-unrelated-histories 可以解决提示历史不�
 git remote -v 查看远程仓库地址
 vim 中的正常模式下，u是撤销上一步操作，ctr+r表示redo，恢复上一步被撤销的操作
 java -Dfile.encoding=utf-8 EmployeeTest 解决java运行在windows中的git中文乱码
+
+alias javac='javac -J-Dfile.encoding=UTF-8'   本行和下一行复制到文件git安装路径\Git\etc\bash.bashrc最后一行，保存，解决java编译运行的乱码问题
+alias java='java -Dfile.encoding=UTF-8'
+
+#!/bin/sh
+"D:\programfile\Sublime Text 3\sublime_text.exe" $1 & 复制这两行到git安装路径\Git\mingw64\bin目录下新建的sublime文件内，保存，解决在git中使用sublime编辑器问题
