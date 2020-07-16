@@ -460,7 +460,7 @@ teach my son git using, he is intrested in it very much.
 
  3、并完成了lstn的2000年数据入库。浏览了一些查询检索空间数据库的帖子，初步理解是geoserver仅提供了矢量的wfs发布，栅格没有。
 
- 4、对于栅格数据的属性查询超图有一种解决思路：就是首先在idesktop制作地图，然后创建sql数据源，最后在iserver中发布GIS服务。
+ 4、对于栅格数据的属性查询超图有一种解决思路：iclient为国产的超图开源软件，里面有丰富的示例，基本可以满足普通项目的需求。
 
  5、第二种思路是借助arcgis api for js进行gis服务的开发。
 
