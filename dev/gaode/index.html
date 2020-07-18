@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>高德地图 - 输入提示和POI搜索插件结合使用</title>
+  <link rel="stylesheet" href="https://cache.amap.com/lbs/static/main.css"/>
+  <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.10&key=264b67fd1314b0a322dc3f017c0f6dff"></script>  
+
+</head>
+<style type="text/css">
+	#searchPOI {
+	  position: absolute;
+	  top: 10px;
+	  right: 40px;
+	  overflow: hidden;
+	  line-height: 20px;
+	  color: #333;
+	  border-radius: 5px;
+	  border: 1px solid silver;
+	  box-shadow: 2px 2px 2px 0px silver;
+	}
+	#searchPOI input[type="text"] {
+	  height: 25px;
+	  border: 0;
+	  padding: 0 5px;
+	  width: 200px;
+	  outline: none;
+	  border-radius: 3px;
+	}
+	.amap-sug-result {
+	  max-width: 250px !important;
+	  overflow: hidden;
+	}
+
+</style>
+<body>
+  <div id="mapContainer"></div>
+  <div id="searchPOI">
+    <input type="text" id="keyword" placeholder="请输入关键字（选定后搜索）"
+      onfocus="this.value = ''" />
+  </div>
+  <script type="text/javascript">
+  	let map = new AMap.Map('mapContainer', {
+	  resizeEnable: true,
+	     center: [124, 47],//地图中心点
+	  // zoom: 13,//地图显示的缩放级别
+	  // keyboardEnable: false
+	});
+
+	AMap.plugin(['AMap.Autocomplete', 'AMap.PlaceSearch'], () => {
+	  let autoOptions = {
+	    // city: "北京", //城市，默认全国
+	    input: 'keyword'
+	  };
+
+	  let autocomplete = new AMap.Autocomplete(autoOptions);
+
+	  let placeSearch = new AMap.PlaceSearch({
+	    // city:'北京',
+	    map
+	  });
+	  AMap.event.addListener(autocomplete, 'select', (e) => {
+	    // TODO 针对选中的POI实现自己的功能
+	    placeSearch.setCity(e.poi.adcode);
+	    placeSearch.search(e.poi.name);
+	  });
+	  // POI后生成的marker的点击事件
+	  AMap.event.addListener(placeSearch, 'markerClick', (e) => {
+	    let location = e.data.location;
+	    setTimeout(() => {
+	      alert(`名称：${e.data.name}\n经纬度：${location.lng},${location.lat}`);
+	    }, 800);
+	  });
+	});
+  </script>
+</body>
+</html>
