@@ -1,0 +1,87 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<title>GeoStudy--by wallimn</title>  
+<link rel="stylesheet" href="http://openlayers.org/en/v3.14.0/css/ol.css" type="text/css">  
+<script src="http://openlayers.org/en/v3.14.0/build/ol.js"></script>  
+  
+<style>  
+.ol-dragbox {  
+    background-color: rgba(255, 255, 255, 0.4);  
+    border-color: rgba(100, 150, 0, 1);  
+}  
+</style>  
+</head>  
+<body>  
+    <div id="map" class="map" style="border: 1px solid red;"></div>  
+    <div id="info">No countries selected</div>  
+    <script type="text/javascript">  
+        //by wallimn, http://wallimn.iteye.com, 2016-02-26  
+        //以下两个参数，通过GeoServer，查看图层属性可获取  
+        var projection = ol.proj.get('EPSG:4326');  
+        var bounds = [ -74.0118315772888, 40.70754683896324,  
+                -74.00153046439813, 40.719885123828675 ];  
+  
+        var vectorSource = new ol.source.Vector({  
+            //1.通过GeoServer生成的KML文件，保存到此网页文件所在的目录  
+            //2.也可以直接使用生成这个文件的链接，动态生成数据文件  
+            url : 'poi.kml',  
+            format : new ol.format.KML()  
+        });  
+        var vectorLayer = new ol.layer.Vector({  
+            source : vectorSource  
+        });  
+  
+        var map = new ol.Map({  
+            layers : [ vectorLayer ],  
+            renderer : 'canvas',  
+            target : 'map',  
+            view : new ol.View({  
+                projection : projection  
+            })  
+        });  
+        map.getView().fit(bounds, map.getSize());  
+  
+        // a normal select interaction to handle click  
+        var select = new ol.interaction.Select();  
+        map.addInteraction(select);  
+  
+        var selectselectedFeatures = select.getFeatures();  
+  
+        // a DragBox interaction used to select features by drawing boxes  
+        var dragBox = new ol.interaction.DragBox({  
+            condition : ol.events.condition.platformModifierKeyOnly  
+        });  
+  
+        map.addInteraction(dragBox);  
+  
+        var infoBox = document.getElementById('info');  
+  
+        dragBox.on('boxend', function() {  
+            // features that intersect the box are added to the collection of  
+            // selected features, and their names are displayed in the "info"  
+            // div  
+            var info = [];  
+            var extent = dragBox.getGeometry().getExtent();  
+            vectorSource.forEachFeatureIntersectingExtent(extent, function(  
+                    feature) {  
+                selectedFeatures.push(feature);  
+                info.push(feature.get('name'));  
+            });  
+            if (info.length > 0) {  
+                infoinfoBox.innerHTML = info.join(', ');  
+            }  
+        });  
+  
+        // clear selection when drawing a new box and when clicking on the map  
+        dragBox.on('boxstart', function() {  
+            selectedFeatures.clear();  
+            infoBox.innerHTML = ' ';  
+        });  
+        map.on('click', function() {  
+            selectedFeatures.clear();  
+            infoBox.innerHTML = ' ';  
+        });  
+    </script>  
+</body>  
+</html>  

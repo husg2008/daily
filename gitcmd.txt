@@ -29,3 +29,5 @@ alias java='java -Dfile.encoding=UTF-8'
 
 #!/bin/sh
 "D:\programfile\Sublime Text 3\sublime_text.exe" $1 & 复制这两行到git安装路径\Git\mingw64\bin目录下新建的sublime文件内，保存，解决在git中使用sublime编辑器问题
+
+git remote add origin git@github.com:husg2008/daily.git 当提示问题fatal: 'origin' does not appear to be a git repository可用该命令解决
