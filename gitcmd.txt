@@ -9,10 +9,14 @@ git config -global user.name *** 创建github的用户名
 git config --global user.email ***创建github的邮箱
 git branch 查看分支
 git checkout origin 切换分支到origin
+
+以下四步一般可以解决刚装机器无法链接远程仓库的问题
 git remote add origin git@github.com:husg2008/daily.git ssh方式添加远程仓库
-ssh-keygen -t rsa -C "husg@radi.ac.cn"  创建ssh key,window位置在：C:\users\husg\.ssh\id_rsa.pub
+ssh-keygen -t rsa -C "husg@radi.ac.cn"  创建ssh key,window位置在：C:\users\husg\.ssh\id_rsa.pub 提示时一律回车即可
+然后打开.pub文件里面的内容添加到远程仓库的设置ssh key里面
 git push origin(remote) branch(local) branch(remote) 推送本地branch分支到远程仓库origin的branch分支
 git pull origin(remote) branch(local) 拉取远程仓库到本地仓库
+
 git branch -r 查看远程分支
 git branch -a 查看所有分支
 git branch -d test 删除本地分支test
@@ -31,3 +35,11 @@ alias java='java -Dfile.encoding=UTF-8'
 "D:\programfile\Sublime Text 3\sublime_text.exe" $1 & 复制这两行到git安装路径\Git\mingw64\bin目录下新建的sublime文件内，保存，解决在git中使用sublime编辑器问题
 
 git remote add origin git@github.com:husg2008/daily.git 当提示问题fatal: 'origin' does not appear to be a git repository可用该命令解决
+
+如何删除GitHub仓库的中某个文件夹
+$ git --help 帮助命令
+$ git pull origin master 将远程仓库里面的项目拉下来
+$ dir 查看有哪些文件夹
+$ git rm -r --cached Photo\ albums 删除Photo albums文件夹(这里的文件夹名有空格命令行需要用"\ "来拼接）
+$ git commit -m ‘删除了Photo albums文件夹t’ 提交,添加操作说明
+$ git push -u origin master 将本次更改更新到GitHub项目上去
